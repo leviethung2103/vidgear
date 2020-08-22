@@ -88,7 +88,7 @@ class CustomVideoCapture:
             if self._threaded_queue_mode:
                 # check queue buffer for overflow
                 if len(self.queue) >= 96:
-                    print ("Queue is full")
+                    # print ("Queue is full")
                     # stop iterating if overflowing occurs
                     time.sleep(0.025)
                     continue
@@ -152,7 +152,8 @@ class CustomVideoCapture:
 # source = 'https://www.youtube.com/watch?v=Csuk1Wm5W0E&list=RDCsuk1Wm5W0E&start_radio=1'
 # source = 'https://www.youtube.com/watch?v=OzpvXl_JRXU'
 # source = 'https://www.youtube.com/watch?v=5fhajnXR2rc'
-source = 'https://www.youtube.com/watch?v=8C6XrNwQHjY'
+# source = 'https://www.youtube.com/watch?v=8C6XrNwQHjY'
+source = 'https://www.youtube.com/watch?v=lPdveDfwIiU'
 stream = CustomVideoCapture(source).start()
 
 
@@ -161,32 +162,12 @@ while True:
     frame = stream.read()
     if frame is None:
         break
-    frame = imutils.resize(frame, width=512)
+    frame = imutils.resize(frame, width=720)
     cv2.imshow("Output Frame", frame)
 
     key = cv2.waitKey(10) & 0xFF
 
     if key == ord("q"):
         break
-
-
-# capture = cv2.VideoCapture('/home/hunglv/Videos/vlc-record-2020-08-05-02h18m21s-canhac3phut.mp4-.mp4')
-
-
-# def __init__(
-#         self,
-#         source=0,
-#         y_tube=False,
-#         backend=0,
-#         colorspace=None,
-#         logging=False,
-#         time_delay=0,
-#         **options
-# ):
-#     from vidgear.gears import CamGear
-#
-#
-#     stream = CamGear(source=url, y_tube=True, time_delay=1, logging=True).start()
-
 
 
